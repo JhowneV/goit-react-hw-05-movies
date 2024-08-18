@@ -1,0 +1,17 @@
+.movieList {
+    list-style: none;
+    padding: 0;
+}
+
+.movieItem {
+    margin: 10px 0;
+}
+
+.movieItem a {
+    text-decoration: none;
+    color: #000;
+}
+
+.movieItem a:hover {
+    color: #007BFF;
+}
