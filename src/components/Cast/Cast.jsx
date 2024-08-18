@@ -1,53 +1,39 @@
-// import { useEffect, useState } from 'react';
-// import { useParams } from 'react-router-dom';
-// import { getMovieCredits } from '../../api';
-// import { getMovieCast } from '../../api';
-// import styles from './Cast.module.css';
-
-// const Cast = () => {
-//   const { movieId } = useParams();
-//   const [cast, setCast] = useState([]);
-
-//   useEffect(() => {
-//     getMovieCredits(movieId).then(setCast);
-//   }, [movieId]);
-
-//   return (
-//     <ul className={styles.castList}>
-//       {cast.map((actor) => (
-//         <li key={actor.id}>
-//           <img src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`} alt={actor.name} />
-//           <p>{actor.name}</p>
-//         </li>
-//       ))}
-//     </ul>
-//   );
-// };
-
-// export default Cast;
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { getMovieCast } from '../../services/movie-api'; 
+import css from './Cast.module.css'; 
 
 
-import React, { useEffect, useState } from 'react';
-import { getMovieCast } from '../../api'; 
-
-const Cast = ({ movieId }) => {
+const Cast = () => {
+  const { movieId } = useParams();
   const [cast, setCast] = useState([]);
 
   useEffect(() => {
     const fetchCast = async () => {
-      const castData = await getMovieCast(movieId);
-      setCast(castData);
+      try {
+        const castData = await getMovieCast(movieId);
+        setCast(castData);
+      } catch (error) {
+        console.error(error);
+      }
     };
 
     fetchCast();
   }, [movieId]);
 
   return (
-    <div>
-      <h2>Cast</h2>
-      <ul>
+    <div className={css.castContainer}>
+      <h2 className={css.title}>Cast</h2>
+      <ul className={css.castList}>
         {cast.map((actor) => (
-          <li key={actor.id}>{actor.name}</li>
+          <li key={actor.id} className={css.castItem}>
+            <img
+              src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`}
+              alt={actor.name}
+              className={css.actorImage}
+            />
+            <p className={css.actorName}>{actor.name}</p>
+          </li>
         ))}
       </ul>
     </div>

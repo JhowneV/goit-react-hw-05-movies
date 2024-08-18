@@ -1,0 +1,33 @@
+.reviewsList {
+    list-style-type: none;
+    /* Removes default list styling */
+    padding: 0;
+    /* Removes default padding */
+    margin: 0;
+    /* Removes default margin */
+}
+
+.reviewsList li {
+    border-bottom: 1px solid #ddd;
+    /* Adds a light border between reviews */
+    padding: 10px 0;
+    /* Adds vertical padding to each review */
+}
+
+.reviewsList h3 {
+    margin: 0 0 5px 0;
+    /* Removes default margin from the heading and adds a bottom margin */
+    font-size: 18px;
+    /* Sets a larger font size for the author name */
+    color: #333;
+    /* Sets a dark color for better readability */
+}
+
+.reviewsList p {
+    margin: 0;
+    /* Removes default margin from the paragraph */
+    font-size: 16px;
+    /* Sets a slightly smaller font size for the review content */
+    color: #555;
+    /* Sets a medium-dark color for the review content */
+}

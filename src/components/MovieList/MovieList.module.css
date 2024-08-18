@@ -1,17 +1,27 @@
 .movieList {
-    list-style: none;
+    list-style-type: none;
     padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
 }
 
-.movieItem {
-    margin: 10px 0;
+.movieCard {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 150px;
+    text-align: center;
 }
 
-.movieItem a {
-    text-decoration: none;
-    color: #000;
+.moviePoster {
+    width: 100%;
+    height: auto;
 }
 
-.movieItem a:hover {
-    color: #007BFF;
+.movieTitle {
+    font-size: 16px;
+    margin: 8px 0;
+    color: #333;
 }

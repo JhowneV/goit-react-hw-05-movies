@@ -1,34 +1,25 @@
-import PropTypes from 'prop-types';
-import { useState } from 'react';
+import React from 'react';
 import css from './SearchBar.module.css';
+import { TbPhotoSearch } from "react-icons/tb";
 
 export const SearchBar = ({ onSubmit }) => {
-    const [query, setQuery] = useState('');
-
-    const handleChange = (e) => {
-        setQuery(e.target.value);
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        onSubmit(query);
-        setQuery('');
-    };
-
     return (
-        <form className={css.searchForm} onSubmit={handleSubmit}>
-            <input
-                type="text"
-                className={css.searchInput}
-                value={query}
-                onChange={handleChange}
-                placeholder="Search movies..."
-            />
-            <button type="submit" className={css.searchButton}>Search</button>
-        </form>
+        <header className={css.searchBar}>
+            <form className={css.searchForm} onSubmit={onSubmit}>
+                <button type="submit" className={css.searchFormButton}>
+                    <TbPhotoSearch className={css.tbPhotoSearch} />
+                    <span className={css.searchFormButtonLabel}>Search</span>
+                </button>
+                <input
+                    className={css.searchFormInput}
+                    type="text"
+                    autoComplete='off'
+                    autoFocus
+                    placeholder="Search images and photos"
+                    name="search"
+                />
+                
+            </form>
+        </header>
     );
-};
-
-SearchBar.propTypes = {
-    onSubmit: PropTypes.func.isRequired,
 };

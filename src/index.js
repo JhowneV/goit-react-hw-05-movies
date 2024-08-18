@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import App from './components/App'; // Adjust path as necessary
 import { BrowserRouter } from 'react-router-dom';
-import App  from 'components/App';
-import './index.css';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <BrowserRouter basename="/goit-react-hw-05-movies">
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>
+// Create a root.
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+// Render the App component within BrowserRouter.
+root.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
 );
- 

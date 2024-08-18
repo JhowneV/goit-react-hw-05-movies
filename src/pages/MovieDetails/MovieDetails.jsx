@@ -1,25 +1,26 @@
-import { useEffect, useState, Suspense } from "react";
-import { useParams, Link, Outlet, useLocation } from "react-router-dom";
-import { fetchMovieDetails } from "services/movie-api";
-import Button from '../components/Button/Button'; 
-import Loader from '../components/Loader/Loader'; 
-import css from './MovieDetailsPage.module.css';
+import React, { useEffect, useState, Suspense } from 'react';
+import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
+import { getMovieDetails } from '../../services/movie-api';
+import Button from '../../components/Button/Button'; 
+import Loader from '../../components/Loader/Loader'; 
+import css from './MovieDetails.module.css';
 
-const MovieDetailsPage = () => {
+const MovieDetails = () => {
     const { movieId } = useParams();
-    const { movieDetails, setMovieDetails } = useState(null);
+    const [movieDetails, setMovieDetails] = useState(null);
     const location = useLocation();
     const backLinkHref = location.state?.from ?? '/';
 
     useEffect(() => {
-        (async () => {
+        const fetchMovieDetails = async () => {
             try {
-                const movie = await fetchMovieDetails(movieId);
+                const movie = await getMovieDetails(movieId);
                 setMovieDetails(movie);
             } catch (error) {
                 console.error(error);
             }
-        })();
+        };
+        fetchMovieDetails();
     }, [movieId]);
     
     if (!movieDetails) {
@@ -43,8 +44,8 @@ const MovieDetailsPage = () => {
                     <p>{movieDetails.overview}</p>
                     <p>Release date: {movieDetails.release_date}</p>
                     <p>Rating: {movieDetails.vote_average}</p>
-                </div >
-            </div >
+                </div>
+            </div>
             <Suspense fallback={<Loader />}>
                 <Outlet />
             </Suspense>
@@ -52,4 +53,4 @@ const MovieDetailsPage = () => {
     );
 };
 
-export default MovieDetailsPage;
+export default MovieDetails;

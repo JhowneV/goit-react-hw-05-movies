@@ -1,18 +1,27 @@
-import { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getMovieReviews } from '../../api';
-import styles from './Reviews.module.css';
+import { getMovieReviews } from '../../services/movie-api';
+import css from './Reviews.module.css';
 
 const Reviews = () => {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    getMovieReviews(movieId).then(setReviews);
+    const fetchReviews = async () => {
+      try {
+        const reviewsData = await getMovieReviews(movieId);
+        setReviews(reviewsData);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchReviews();
   }, [movieId]);
 
   return (
-    <ul className={styles.reviewsList}>
+    <ul className={css.reviewsList}>
       {reviews.length > 0 ? (
         reviews.map((review) => (
           <li key={review.id}>
