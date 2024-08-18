@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { getTrendingMovies } from '../../services/movie-api'; // Corrected import
-import MovieList from '../../components/MovieList/MovieList'; // Ensure this path is correct
-import Loader from '../../components/Loader/Loader'; // Ensure this path is correct
-import css from './Home.module.css'; // Ensure this path is correct
+import { getTrendingMovies } from '../../services/movie-api'; // Correct path
+import MovieList from '../../components/MovieList/MovieList'; // Correct path
+import Loader from '../../components/Loader/Loader'; // Correct path
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(true);
-
+  const [loading, setLoading] = useState(false);
+  
   useEffect(() => {
     const fetchMovies = async () => {
+      setLoading(true);
       try {
         const trendingMovies = await getTrendingMovies();
         setMovies(trendingMovies);
       } catch (error) {
-        console.error('Failed to fetch trending movies:', error);
+        console.error('Error fetching movies:', error);
       } finally {
         setLoading(false);
       }
@@ -22,9 +22,9 @@ const Home = () => {
 
     fetchMovies();
   }, []);
-
+  
   return (
-    <div className={css.home}>
+    <div>
       {loading ? <Loader /> : <MovieList movies={movies} />}
     </div>
   );
