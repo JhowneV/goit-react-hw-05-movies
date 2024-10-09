@@ -1,5 +1,5 @@
 import React from 'react';
-import Cast from '../Cast/Cast';
+import Cast from '../Components/Cast/Cast.jsx';
 import Reviews from '../Reviews/Reviews';
 import css from './CastReviews.module.css'; 
 
