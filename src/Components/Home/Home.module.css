@@ -1,0 +1,15 @@
+.home {
+    padding: 20px;
+    text-align: center;
+}
+
+.home h1 {
+    font-size: 36px;
+    color: #444;
+}
+
+.movieList {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}

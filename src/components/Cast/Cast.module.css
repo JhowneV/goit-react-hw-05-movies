@@ -1,31 +1,52 @@
-.castContainer {
+.castReviewsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    /* Space between Cast and Reviews sections */
     padding: 20px;
 }
 
-.title {
-    font-size: 24px;
+.castSection,
+.reviewsSection {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* For Cast section */
+.castSection ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.castSection li {
     margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+.castSection li p {
+    margin: 5px 0;
 }
 
 .castList {
     list-style: none;
     padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    margin: 20px 0;
 }
 
-.castItem {
-    width: 150px;
-    text-align: center;
+.castList li {
+    margin-bottom: 15px;
 }
 
-.actorImage {
-    width: 100%;
-    border-radius: 8px;
+.castList li p {
+    font-size: 16px;
+    color: #333;
+    margin: 0;
 }
 
-.actorName {
-    margin-top: 5px;
-    font-size: 14px;
+.castList li p:first-of-type {
+    font-weight: bold;
 }
