@@ -1,22 +1,7 @@
-// import React from 'react';
-// import { useSearchParams } from 'react-router-dom';
-
-// const MoviesPage = () => {
-//   const [searchParams, setSearchParams] = useSearchParams();  // <--- Warning here
-
-//   return (
-//     <div>
-//       <h1>Movies Page</h1>
-//       {/* other code */}
-//     </div>
-//   );
-// };
-
-// export default MoviesPage;
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import MovieList from '../Shared/MovieList/MovieList';  // Ensure this path is correct
-import { searchMovies } from '../../services/api';      // Ensure this path is correct
+import MovieList from '../Shared/MovieList/MovieList';  
+import { searchMovies } from '../../services/api';      
 
 function Movies() {
   const [searchParams, setSearchParams] = useSearchParams();
